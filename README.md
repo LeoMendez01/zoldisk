@@ -27,8 +27,19 @@ Puntaje final:
 - Pregunta tipo de vínculo: amistad, pareja o trabajo.
 - Preguntas adaptadas al tipo de vínculo (sin mezclar amor en trabajo/amistad).
 - Pregunta nacionalidad.
-- Fecha de nacimiento por calendario para obtener signo zodiacal.
+- Fecha de nacimiento con selector de día/mes/año para obtener signo zodiacal.
 - Cada pregunta usa 10 opciones de respuesta para más precisión.
+
+## Vista previa de la interfaz
+
+![Vista previa Zoldisk](docs/app-preview.svg)
+
+## Deploy web (soluciona pantalla de README)
+
+Si tu plataforma estaba mostrando solo este README, ahora el repo incluye una entrada web real en `index.html` + `web/app.js` + `web/styles.css`.
+
+- En Netlify/Vercel/Cloudflare Pages, configura **Publish directory** en la raíz del proyecto (`.`).
+- Si usas GitHub Pages, publica desde la rama/carpeta que contenga `index.html`.
 
 ## Ejecutar
 

@@ -1,8 +1,6 @@
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { StatusBar } from 'expo-status-bar';
 import { useMemo, useState } from 'react';
 import {
-  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -43,8 +41,6 @@ const baseForm = (): FormState => ({
 export default function App() {
   const [formA, setFormA] = useState<FormState>(baseForm());
   const [formB, setFormB] = useState<FormState>(baseForm());
-  const [showPickerA, setShowPickerA] = useState(false);
-  const [showPickerB, setShowPickerB] = useState(false);
 
   const questionsA = useMemo(() => getQuestions(formA.connectionType), [formA.connectionType]);
   const questionsB = useMemo(() => getQuestions(formB.connectionType), [formB.connectionType]);
@@ -78,8 +74,6 @@ export default function App() {
           form={formA}
           setForm={setFormA}
           questions={questionsA}
-          showPicker={showPickerA}
-          setShowPicker={setShowPickerA}
         />
 
         <ProfileForm
@@ -87,8 +81,6 @@ export default function App() {
           form={formB}
           setForm={setFormB}
           questions={questionsB}
-          showPicker={showPickerB}
-          setShowPicker={setShowPickerB}
         />
 
         <View style={styles.card}>
@@ -109,15 +101,11 @@ function ProfileForm({
   form,
   setForm,
   questions,
-  showPicker,
-  setShowPicker
 }: {
   title: string;
   form: FormState;
   setForm: (next: FormState) => void;
   questions: ReturnType<typeof getQuestions>;
-  showPicker: boolean;
-  setShowPicker: (v: boolean) => void;
 }) {
   const zodiac = getZodiacSign(form.birthDate);
 
@@ -167,20 +155,42 @@ function ProfileForm({
       />
 
       <Text style={styles.label}>Fecha de nacimiento</Text>
-      <Pressable style={styles.dateBtn} onPress={() => setShowPicker(true)}>
-        <Text style={styles.dateText}>{form.birthDate.toLocaleDateString()} • {zodiacIcon(zodiac)} {zodiac}</Text>
-      </Pressable>
-      {showPicker && (
-        <DateTimePicker
-          value={form.birthDate}
-          mode="date"
-          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-          onChange={(_, selected) => {
-            setShowPicker(Platform.OS === 'ios');
-            if (selected) setForm({ ...form, birthDate: selected });
+      <View style={styles.dateSelectors}>
+        <NumericField
+          label="Día"
+          value={form.birthDate.getDate()}
+          min={1}
+          max={31}
+          onChange={(day) => {
+            const d = new Date(form.birthDate);
+            d.setDate(day);
+            setForm({ ...form, birthDate: d });
           }}
         />
-      )}
+        <NumericField
+          label="Mes"
+          value={form.birthDate.getMonth() + 1}
+          min={1}
+          max={12}
+          onChange={(month) => {
+            const d = new Date(form.birthDate);
+            d.setMonth(month - 1);
+            setForm({ ...form, birthDate: d });
+          }}
+        />
+        <NumericField
+          label="Año"
+          value={form.birthDate.getFullYear()}
+          min={1940}
+          max={new Date().getFullYear()}
+          onChange={(year) => {
+            const d = new Date(form.birthDate);
+            d.setFullYear(year);
+            setForm({ ...form, birthDate: d });
+          }}
+        />
+      </View>
+      <Text style={styles.dateText}>{form.birthDate.toLocaleDateString()} • {zodiacIcon(zodiac)} {zodiac}</Text>
 
       <Text style={styles.section}>Preguntas ({form.connectionType})</Text>
       {questions.map((q) => (
@@ -228,6 +238,36 @@ function OptionRow({
   );
 }
 
+
+function NumericField({
+  label,
+  value,
+  min,
+  max,
+  onChange
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <View style={styles.numberWrap}>
+      <Text style={styles.numberLabel}>{label}</Text>
+      <View style={styles.numberRow}>
+        <Pressable style={styles.smallBtn} onPress={() => onChange(Math.max(min, value - 1))}>
+          <Text style={styles.smallBtnText}>-</Text>
+        </Pressable>
+        <Text style={styles.numberValue}>{value}</Text>
+        <Pressable style={styles.smallBtn} onPress={() => onChange(Math.min(max, value + 1))}>
+          <Text style={styles.smallBtnText}>+</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#080c1d' },
   container: { padding: 16, paddingBottom: 80 },
@@ -257,8 +297,14 @@ const styles = StyleSheet.create({
   chipSelected: { backgroundColor: '#f7dc8b' },
   chipText: { color: '#d4dbf9', textTransform: 'capitalize' },
   chipTextSelected: { color: '#2a1e00', fontWeight: '700' },
-  dateBtn: { backgroundColor: '#17234a', borderRadius: 10, padding: 10 },
-  dateText: { color: '#e9eeff', fontWeight: '600' },
+  dateSelectors: { flexDirection: 'row', gap: 8 },
+  numberWrap: { flex: 1, backgroundColor: '#17234a', borderRadius: 10, padding: 8 },
+  numberLabel: { color: '#d6defd', marginBottom: 6, textAlign: 'center' },
+  numberRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  smallBtn: { backgroundColor: '#23356d', width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
+  smallBtnText: { color: '#fff', fontSize: 18, fontWeight: '700', marginTop: -2 },
+  numberValue: { color: '#fff', fontWeight: '700' },
+  dateText: { color: '#e9eeff', fontWeight: '600', marginTop: 8 },
   section: { color: '#f9e8a9', marginTop: 16, marginBottom: 8, fontSize: 16, fontWeight: '700' },
   questionWrap: { marginBottom: 12 },
   qText: { color: '#e5eaff', marginBottom: 6, fontWeight: '600' },
