@@ -34,6 +34,13 @@ Puntaje final:
 
 ![Vista previa Zoldisk](docs/app-preview.svg)
 
+## Deploy web (soluciona pantalla de README)
+
+Si tu plataforma estaba mostrando solo este README, ahora el repo incluye una entrada web real en `index.html` + `web/app.js` + `web/styles.css`.
+
+- En Netlify/Vercel/Cloudflare Pages, configura **Publish directory** en la raíz del proyecto (`.`).
+- Si usas GitHub Pages, publica desde la rama/carpeta que contenga `index.html`.
+
 ## Ejecutar
 
 ```bash
