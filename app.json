@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Zoldisk Compatibilidad",
+    "slug": "zoldisk-compat",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

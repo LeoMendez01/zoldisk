@@ -1,0 +1,27 @@
+<svg width="480" height="900" viewBox="0 0 480 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="900" fill="#080c1d"/>
+  <text x="240" y="60" text-anchor="middle" fill="#f7dc8b" font-size="30" font-family="Arial" font-weight="700">✨ Zoldisk Match Zodiac ✨</text>
+  <text x="240" y="92" text-anchor="middle" fill="#c6cbed" font-size="16" font-family="Arial">Compatibilidad inteligente entre personas</text>
+
+  <rect x="20" y="120" width="440" height="190" rx="16" fill="#111933" stroke="#2f3b68"/>
+  <text x="40" y="155" fill="#ffe8a8" font-size="24" font-family="Arial" font-weight="700">Persona A ♈</text>
+  <rect x="40" y="178" width="92" height="30" rx="15" fill="#f7dc8b"/><text x="86" y="198" text-anchor="middle" fill="#2a1e00" font-size="14" font-family="Arial">mujer</text>
+  <rect x="140" y="178" width="92" height="30" rx="15" fill="#f7dc8b"/><text x="186" y="198" text-anchor="middle" fill="#2a1e00" font-size="14" font-family="Arial">ambos</text>
+  <rect x="240" y="178" width="92" height="30" rx="15" fill="#f7dc8b"/><text x="286" y="198" text-anchor="middle" fill="#2a1e00" font-size="14" font-family="Arial">pareja</text>
+  <text x="40" y="240" fill="#d0d7f6" font-size="16" font-family="Arial">Nacionalidad: Chilena</text>
+  <text x="40" y="270" fill="#d0d7f6" font-size="16" font-family="Arial">Signo: Aries</text>
+
+  <rect x="20" y="330" width="440" height="190" rx="16" fill="#111933" stroke="#2f3b68"/>
+  <text x="40" y="365" fill="#ffe8a8" font-size="24" font-family="Arial" font-weight="700">Persona B ♌</text>
+  <rect x="40" y="388" width="92" height="30" rx="15" fill="#f7dc8b"/><text x="86" y="408" text-anchor="middle" fill="#2a1e00" font-size="14" font-family="Arial">hombre</text>
+  <rect x="140" y="388" width="92" height="30" rx="15" fill="#f7dc8b"/><text x="186" y="408" text-anchor="middle" fill="#2a1e00" font-size="14" font-family="Arial">ambos</text>
+  <rect x="240" y="388" width="92" height="30" rx="15" fill="#f7dc8b"/><text x="286" y="408" text-anchor="middle" fill="#2a1e00" font-size="14" font-family="Arial">pareja</text>
+  <text x="40" y="450" fill="#d0d7f6" font-size="16" font-family="Arial">Nacionalidad: Argentina</text>
+  <text x="40" y="480" fill="#d0d7f6" font-size="16" font-family="Arial">Signo: Leo</text>
+
+  <rect x="20" y="550" width="440" height="220" rx="16" fill="#111933" stroke="#2f3b68"/>
+  <text x="40" y="590" fill="#ffe7a4" font-size="26" font-family="Arial" font-weight="700">🔮 Resultado de compatibilidad</text>
+  <text x="40" y="660" fill="#ffffff" font-size="64" font-family="Arial" font-weight="800">84%</text>
+  <text x="40" y="700" fill="#cfd6f8" font-size="18" font-family="Arial">Zodiaco: 85% · Preferencias: 82%</text>
+  <text x="40" y="730" fill="#cfd6f8" font-size="18" font-family="Arial">Intención: 100% · Nacionalidad: 75%</text>
+</svg>
